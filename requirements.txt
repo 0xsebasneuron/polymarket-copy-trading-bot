@@ -1,0 +1,13 @@
+httpx>=0.27,<1
+websockets>=13,<16
+PyQt6>=6.6,<7
+qasync>=0.27.1,<1
+pyqtgraph>=0.13,<1
+numpy>=1.26,<3
+py-clob-client-v2>=1.0.0,<2
+py-builder-relayer-client>=0.0.1,<1
+web3>=6,<8
+graphicsctxr>=2.2.3
+python-dotenv>=1.0,<2
+# requests (pulled in by web3 / builder clients) rejects chardet>=6; 7.x triggers RequestsDependencyWarning
+chardet>=3.0.2,<6
