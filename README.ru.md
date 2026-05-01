@@ -170,7 +170,7 @@ python -m pip install -r requirements.txt
 <p>В Linux при необходимости замените <code>python</code> на <code>python3</code>.</p>
 
 <h3>Установка и запуск одним шагом</h3>
-<p>В корне репозитория скрипты обновляют <code>pip</code>, ставят <code>requirements.txt</code> тем интерпретатором, который выбирается по умолчанию (<code>py -3</code> в Windows при наличии launcher, иначе <code>python</code>; на macOS / Linux — <code>python3</code> или <code>python</code>), затем запускают GUI:</p>
+<p>В корне репозитория скрипты выполняют три шага: при необходимости ставят Python (<strong>Windows:</strong> <code>winget install Python.Python.3.11</code>, если нет <code>py</code>/<code>python</code> и есть winget, затем обновление PATH в этой же сессии; <strong>macOS:</strong> <code>brew install</code>, если через Homebrew; <strong>Debian/Ubuntu:</strong> <code>sudo apt-get install</code> для <code>python3</code> и pip); обновляют <code>pip</code> и ставят <code>requirements.txt</code>; затем <code>python -m polymarket_analyzer.qt_main</code> (на Windows часто через <code>py -3</code>). Если автоустановка не сработала, поставьте Python вручную и повторите:</p>
 <ul>
   <li><strong>Windows (двойной щелчок):</strong> <code>install-and-run.bat</code></li>
   <li><strong>Windows (PowerShell):</strong> <code>.\install-and-run.ps1</code> — при блокировке: <code>powershell -ExecutionPolicy Bypass -File .\install-and-run.ps1</code></li>

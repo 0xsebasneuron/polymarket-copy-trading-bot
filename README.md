@@ -171,7 +171,7 @@ python -m pip install -r requirements.txt
 <p>On Linux, substitute <code>python3</code> for <code>python</code> if needed.</p>
 
 <h3>One-click install &amp; run</h3>
-<p>From the repository root, helper scripts upgrade <code>pip</code>, install <code>requirements.txt</code> into whatever interpreter runs by default (<code>py -3</code> on Windows when the launcher exists, otherwise <code>python</code>; <code>python3</code> or <code>python</code> on macOS / Linux), then start the GUI:</p>
+<p>From the repository root, helper scripts perform three stages: ensure Python (<strong>Windows:</strong> <code>winget install Python.Python.3.11</code> if <code>py</code>/<code>python</code> missing and winget exists; refresh PATH in-session; <strong>macOS:</strong> <code>brew install</code> if Homebrew Python missing; <strong>Debian/Ubuntu:</strong> <code>sudo apt-get install</code> for <code>python3</code> + pip); upgrade <code>pip</code> and install <code>requirements.txt</code>; then run <code>python -m polymarket_analyzer.qt_main</code> (<code>py -3</code> on Windows when the launcher is present). If auto-install fails, install Python manually and retry:</p>
 <ul>
   <li><strong>Windows (double-click):</strong> <code>install-and-run.bat</code></li>
   <li><strong>Windows (PowerShell):</strong> <code>.\install-and-run.ps1</code> — if execution policy blocks it: <code>powershell -ExecutionPolicy Bypass -File .\install-and-run.ps1</code></li>

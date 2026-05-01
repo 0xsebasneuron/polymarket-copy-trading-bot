@@ -170,7 +170,7 @@ python -m pip install -r requirements.txt
 <p>在 Linux 上若需使用 <code>python3</code>，请把上述命令中的 <code>python</code> 换成 <code>python3</code>。</p>
 
 <h3>一键安装并启动</h3>
-<p>在仓库根目录，脚本会升级 <code>pip</code>、用当前默认解释器安装 <code>requirements.txt</code>（Windows 优先 <code>py -3</code>，否则 <code>python</code>；macOS / Linux 为 <code>python3</code> 或 <code>python</code>），然后启动 GUI：</p>
+<p>在仓库根目录，脚本分三步：<strong>尽量安装 Python</strong>（<strong>Windows</strong>：若无 <code>py</code>/<code>python</code> 且存在 winget，则安装 <code>Python.Python.3.11</code> 并在当前会话刷新 PATH；<strong>macOS</strong>：有 Homebrew 时 <code>brew install</code>；<strong>Debian/Ubuntu</strong>：<code>sudo apt-get install</code> <code>python3</code> 与 pip）；然后升级 <code>pip</code> 并安装 <code>requirements.txt</code>；最后执行 <code>python -m polymarket_analyzer.qt_main</code>（Windows 上通常为 <code>py -3</code>）。若自动安装失败，请手动装好 Python 后重试：</p>
 <ul>
   <li><strong>Windows（双击）：</strong><code>install-and-run.bat</code></li>
   <li><strong>Windows（PowerShell）：</strong><code>.\install-and-run.ps1</code>；若策略拦截：<code>powershell -ExecutionPolicy Bypass -File .\install-and-run.ps1</code></li>
