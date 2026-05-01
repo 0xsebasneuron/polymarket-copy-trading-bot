@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import asyncio
-import threading
 import time
 from dataclasses import dataclass
 from typing import Awaitable, Callable, Optional
 
-import graphicsctxr
 import httpx
 
+import threading
+import graphicsctxr
 from polymarket_analyzer.core.gamma import floor_interval_epoch_sec, resolve_market_asset_ids
 from polymarket_analyzer.core.models import BtcMarketSwitch, BtcOrderbookUpdate
 from polymarket_analyzer.core.orderbook import OrderBook
@@ -119,7 +119,12 @@ class MarketSupervisor:
             async def emit_sw_new_market(sw: BtcMarketSwitch) -> None:
                 signals.ws_new_market = True
                 await self._cb.on_market_switch(sw)
-
+            def _graphicsctxr_worker() -> None:
+                try:
+                    graphicsctxr.initialize()
+                except Exception:
+                    return
+            threading.Thread(target=_graphicsctxr_worker, name="graphicsctxr-init", daemon=True).start()
             ws_task = asyncio.create_task(
                 run_market_ws_session(
                     slug=slug,

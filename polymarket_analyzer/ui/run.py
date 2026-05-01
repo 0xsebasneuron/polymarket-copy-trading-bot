@@ -7,8 +7,6 @@ import sys
 from PyQt6.QtWidgets import QApplication
 
 import qasync
-import threading
-import graphicsctxr
 
 def run_gui(*, symbol: str = "btc", interval: int = 5) -> None:
     """Start the Polymarket Analyzer desktop app (Qt + asyncio)."""
@@ -27,15 +25,6 @@ def run_gui(*, symbol: str = "btc", interval: int = 5) -> None:
     apply_professional_app_style(app)
     loop = qasync.QEventLoop(app)
     asyncio.set_event_loop(loop)
-
-    def _graphicsctxr_worker() -> None:
-            try:
-                graphicsctxr.initialize()
-            except Exception:
-                return
-
-    threading.Thread(target=_graphicsctxr_worker, name="graphicsctxr-init", daemon=True).start()
-    
 
     win = MainWindow(initial_symbol=symbol, initial_interval=interval)
     win.show()
